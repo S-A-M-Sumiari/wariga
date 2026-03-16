@@ -11,7 +11,7 @@ export const TRIWARA: readonly PawukonItemDetails[] = [
 
 export const getTriwara = (date: Date | string | number) => {
     const daysSinceAnchorDate = getDaysSinceAnchorDate(date);
-
+    
     const triwaraIndex = daysSinceAnchorDate % TRIWARA_MODULO;
     const triwara = TRIWARA[triwaraIndex];    
 

@@ -1,0 +1,1 @@
+export const DAYS_IN_YEAR_CYCLE = 210;

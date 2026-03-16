@@ -14,7 +14,7 @@ export const SADWARA: readonly PawukonItemDetails[] = [
 
 export const getSadwara = (date: Date | string | number) => {
     const daysSinceAnchorDate = getDaysSinceAnchorDate(date);
-
+    
     const sadwaraIndex = daysSinceAnchorDate % SADWARA_MODULO;
     const sadwara = SADWARA[sadwaraIndex];
 

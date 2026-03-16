@@ -1,6 +1,6 @@
 import * as pawukon from "./pawukon";
 
-const today = new Date("2025-02-09");
+const today = new Date("2027-02-08");
 
 const triwara = pawukon.getTriwara(today);
 const pancawara = pawukon.getPancawara(today);

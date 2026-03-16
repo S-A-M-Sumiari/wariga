@@ -38,8 +38,7 @@ export const WUKU: readonly PawukonItemDetails[] = [
 
 export const getWuku = (date: Date | string | number) => {
     const daysSinceAnchorDate = getDaysSinceAnchorDate(date);
-
-    const wukuIndex = daysSinceAnchorDate % WUKU_MODULO;
+    const wukuIndex = Math.floor(daysSinceAnchorDate / 7) % WUKU_MODULO;
     const wuku = WUKU[wukuIndex];
 
     return wuku;
