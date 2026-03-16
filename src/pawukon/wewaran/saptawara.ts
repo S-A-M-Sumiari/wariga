@@ -1,0 +1,23 @@
+import { getDaysSinceAnchorDate } from "../../utilities/date";
+import type { PawukonItemDetails } from "../types";
+
+const SAPTAWARA_MODULO = 7;
+
+export const SAPTAWARA: readonly PawukonItemDetails[] = [
+    { name: "redite", urip: 5, direction: "Timur - Purwa", deity: "Sang Hyang Bhaskara" },
+    { name: "soma", urip: 4, direction: "Utara - Utara", deity: "Sang Hyang Candra" },
+    { name: "anggara", urip: 3, direction: "Barat Daya - Nairiti", deity: "Sang Hyang Angkara" },
+    { name: "buda", urip: 7, direction: "Barat - Pascima", deity: "Sang Hyang Udaka" },
+    { name: "wraspati", urip: 8, direction: "Tenggara - Gneyan", deity: "Sang Hyang Sukra Guru" },
+    { name: "sukra", urip: 6, direction: "Timur Laut - Airsanya", deity: "Sang Hyang Bregu" },
+    { name: "saniscara", urip: 9, direction: "Selatan - Daksina", deity: "Sang Hyang Wasu" }
+] as const;
+
+export const getSaptawara = (date: Date | string | number) => {
+    const daysSinceAnchorDate = getDaysSinceAnchorDate(date);
+
+    const saptawaraIndex = daysSinceAnchorDate % SAPTAWARA_MODULO;
+    const saptawara = SAPTAWARA[saptawaraIndex];
+
+    return saptawara;
+}

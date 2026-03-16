@@ -1,30 +1,17 @@
-import { ANCHOR_DATE } from "./consts/anchor-date";
-import { MS_PER_DAY } from "./consts/time";
 import * as pawukon from "./pawukon";
 
-const getValidDate = (date: Date | string | number) => {
-    const dateObj = new Date(date);
+const today = new Date("2025-02-09");
 
-    if (Number.isNaN(dateObj.getTime()))
-        throw new Error("Invalid date");
+const triwara = pawukon.getTriwara(today);
+const pancawara = pawukon.getPancawara(today);
+const sadwara = pawukon.getSadwara(today);
+const saptawara = pawukon.getSaptawara(today);
+const wuku = pawukon.getWuku(today);
 
-    return dateObj;
-}
+console.log(triwara);
+console.log(pancawara);
+console.log(sadwara);
+console.log(saptawara);
+console.log(wuku);
 
-const getDaysSinceAnchorDate = (date: Date | string | number) => {
-    const dateObj = getValidDate(date);
-
-    const deltaTime = Math.abs(dateObj.getTime() - ANCHOR_DATE.getTime());
-    const days = Math.floor(deltaTime / MS_PER_DAY);
-
-    return days;
-}
-
-const getWuku = (date: Date | string | number) => {
-    const daysSinceAnchorDate = getDaysSinceAnchorDate(date);
-
-    const wukuIndex = daysSinceAnchorDate % pawukon.WUKU_MODULO;
-    const wuku = pawukon.WUKU_DATA[wukuIndex];
-
-    return wuku;
-}
+console.log(`Triwara: ${triwara?.name} Pancawara: ${pancawara?.name} Sadwara: ${sadwara?.name} Saptawara: ${saptawara?.name} Wuku: ${wuku?.name}`);

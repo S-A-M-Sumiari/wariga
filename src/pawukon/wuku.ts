@@ -1,11 +1,9 @@
-export interface WukuDetails {
-    name: string;
-    urip: number;
-    direction: string;
-    deity: string;
-}
+import { getDaysSinceAnchorDate } from "../utilities/date";
+import type { PawukonItemDetails } from "./types";
 
-export const WUKU_DATA: readonly WukuDetails[] = [
+const WUKU_MODULO = 30;
+
+export const WUKU: readonly PawukonItemDetails[] = [
     { name: "sinta", urip: 7, direction: "Barat - Pascima", deity: "Sang Hyang Yamadipati" },
     { name: "landep", urip: 1, direction: "Barat Laut - Wayabya", deity: "Sang Hyang Mahadewa" },
     { name: "ukir", urip: 4, direction: "Utara - Utara", deity: "Sang Hyang Mahayekti" },
@@ -38,4 +36,11 @@ export const WUKU_DATA: readonly WukuDetails[] = [
     { name: "watugunung", urip: 8, direction: "Tenggara - Gneyan", deity: "Sang Hyang Anantabhoga" }
 ] as const;
 
-export const WUKU_MODULO = 30;
+export const getWuku = (date: Date | string | number) => {
+    const daysSinceAnchorDate = getDaysSinceAnchorDate(date);
+
+    const wukuIndex = daysSinceAnchorDate % WUKU_MODULO;
+    const wuku = WUKU[wukuIndex];
+
+    return wuku;
+}
