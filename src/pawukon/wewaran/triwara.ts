@@ -13,7 +13,9 @@ export const getTriwara = (date: Date | string | number) => {
     const daysSinceAnchorDate = getDaysSinceAnchorDate(date);
     
     const triwaraIndex = daysSinceAnchorDate % TRIWARA_MODULO;
-    const triwara = TRIWARA[triwaraIndex];    
+    const triwara = TRIWARA[triwaraIndex];
+    
+    if (!triwara) throw new Error("Triwara not found");
 
     return triwara;
 }

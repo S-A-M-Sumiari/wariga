@@ -17,5 +17,7 @@ export const getPancawara = (date: Date | string | number) => {
     const pancawaraIndex = daysSinceAnchorDate % PANCAWARA_MODULO;
     const pancawara = PANCAWARA[pancawaraIndex];
 
+    if (!pancawara) throw new Error("Pancawara not found");
+
     return pancawara;
 }

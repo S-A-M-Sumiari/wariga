@@ -19,5 +19,7 @@ export const getSaptawara = (date: Date | string | number) => {
     const saptawaraIndex = daysSinceAnchorDate % SAPTAWARA_MODULO;
     const saptawara = SAPTAWARA[saptawaraIndex];
 
+    if (!saptawara) throw new Error("Saptawara not found");
+
     return saptawara;
 }

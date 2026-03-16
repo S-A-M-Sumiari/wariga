@@ -18,5 +18,7 @@ export const getSadwara = (date: Date | string | number) => {
     const sadwaraIndex = daysSinceAnchorDate % SADWARA_MODULO;
     const sadwara = SADWARA[sadwaraIndex];
 
+    if (!sadwara) throw new Error("Sadwara not found");
+
     return sadwara;
 }
