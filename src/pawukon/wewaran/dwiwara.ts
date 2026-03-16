@@ -8,16 +8,13 @@ export const DWIWARA: readonly PawukonItemDetails[] = [
 ] as const;
 
 /**
- * Get the dwiwara based on the saptawara and pancawara.
+ * Get the dwiwara based on the sum of the urip of the saptawara and pancawara.
  * If the urip sum is even then it's menga, otherwise it's pepet.
  * 
- * @param saptawara - The saptawara to get the dwiwara for.
- * @param pancawara - The pancawara to get the dwiwara for.
+ * @param uripSum - The sum of the urip of the saptawara and pancawara.
  * @returns The dwiwara.
  */
-export const getDwiwara = (saptawara: PawukonItemDetails, pancawara: PawukonItemDetails) => {
-    const uripSum = saptawara.urip + pancawara.urip;
-    
+export const getDwiwara = (uripSum: number) => {    
     const dwiwaraIndex = uripSum % DWIWARA_MODULO;
     const dwiwara = DWIWARA[dwiwaraIndex];
 

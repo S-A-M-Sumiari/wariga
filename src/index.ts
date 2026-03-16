@@ -7,8 +7,11 @@ const pancawara = pawukon.getPancawara(today);
 const sadwara = pawukon.getSadwara(today);
 const saptawara = pawukon.getSaptawara(today);
 const wuku = pawukon.getWuku(today);
-const dwiwara = pawukon.getDwiwara(saptawara, pancawara);
-const ekawara = pawukon.getEkawara(dwiwara);
+
+const uripSum = saptawara.urip + pancawara.urip;
+const dwiwara = pawukon.getDwiwara(uripSum);
+const ekawara = pawukon.getEkawara(uripSum);
+const dasawara = pawukon.getDasawara(uripSum);
 
 
-console.log(`Ekawara: ${ekawara?.name ?? "N/A"} Dwiwara: ${dwiwara?.name} Triwara: ${triwara?.name} Pancawara: ${pancawara?.name} Sadwara: ${sadwara?.name} Saptawara: ${saptawara?.name} Wuku: ${wuku?.name}`);
+console.log(`Dasawara: ${dasawara?.name} Ekawara: ${ekawara?.name ?? "N/A"} Dwiwara: ${dwiwara?.name} Triwara: ${triwara?.name} Pancawara: ${pancawara?.name} Sadwara: ${sadwara?.name} Saptawara: ${saptawara?.name} Wuku: ${wuku?.name}`);
