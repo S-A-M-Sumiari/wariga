@@ -1,12 +1,14 @@
 import * as pawukon from "./pawukon";
 
-const today = new Date("2020-02-09");
+const today = new Date("2028-02-09");
 
 const triwara = pawukon.getTriwara(today);
 const pancawara = pawukon.getPancawara(today);
 const sadwara = pawukon.getSadwara(today);
 const saptawara = pawukon.getSaptawara(today);
 const sangawara = pawukon.getSangawara(today);
+const caturwara = pawukon.getCaturwara(today);
+const astawara = pawukon.getAstawara(today);
 const wuku = pawukon.getWuku(today);
 
 const uripSum = saptawara.urip + pancawara.urip;
@@ -15,4 +17,4 @@ const ekawara = pawukon.getEkawara(uripSum);
 const dasawara = pawukon.getDasawara(uripSum);
 
 
-console.log(`Sangawara: ${sangawara?.name} Dasawara: ${dasawara?.name} Ekawara: ${ekawara?.name ?? "N/A"} Dwiwara: ${dwiwara?.name} Triwara: ${triwara?.name} Pancawara: ${pancawara?.name} Sadwara: ${sadwara?.name} Saptawara: ${saptawara?.name} Wuku: ${wuku?.name}`);
+console.log(`Sangawara: ${sangawara?.name} Caturwara: ${caturwara?.name} Astawara: ${astawara?.name} Dasawara: ${dasawara?.name} Ekawara: ${ekawara?.name ?? "N/A"} Dwiwara: ${dwiwara?.name} Triwara: ${triwara?.name} Pancawara: ${pancawara?.name} Sadwara: ${sadwara?.name} Saptawara: ${saptawara?.name} Wuku: ${wuku?.name}`);

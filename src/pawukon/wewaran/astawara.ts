@@ -1,4 +1,7 @@
+import { getDaysSinceAnchorDate } from "../../utilities/date";
 import type { PawukonItemDetails } from "../types";
+
+const ASTAWARA_MODULO = 8;
 
 export const ASTAWARA: readonly PawukonItemDetails[] = [
   { name: "sri", urip: 6, direction: "Timur Laut - Airsanya", deity: "Dewi Sri" },
@@ -10,3 +13,17 @@ export const ASTAWARA: readonly PawukonItemDetails[] = [
   { name: "kala", urip: 1, direction: "Barat Laut - Wayabya", deity: "Sang Hyang Kala" },
   { name: "uma", urip: 4, direction: "Utara - Utara", deity: "Dewi Uma" }
 ] as const;
+
+export const getAstawara = (date: Date | string | number) => {
+  let daysSinceAnchorDate = getDaysSinceAnchorDate(date);
+
+  if (daysSinceAnchorDate >= 72)
+      daysSinceAnchorDate += 6;
+
+  const astawaraIndex = (daysSinceAnchorDate) % ASTAWARA_MODULO;
+  const astawara = ASTAWARA[astawaraIndex];
+
+  if (!astawara) throw new Error("Astawara not found");
+
+  return astawara;
+}
