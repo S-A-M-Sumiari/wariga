@@ -1,4 +1,7 @@
+import { getDaysSinceAnchorDate } from "../../utilities/date";
 import type { PawukonItemDetails } from "../types";
+
+const SANGAWARA_MODULO = 9;
 
 export const SANGAWARA: readonly PawukonItemDetails[] = [
   { name: "dangu", urip: 5, direction: "Timur - Purwa", deity: "Sang Hyang Iswara" },
@@ -11,3 +14,20 @@ export const SANGAWARA: readonly PawukonItemDetails[] = [
   { name: "tulus", urip: 6, direction: "Timur Laut - Airsanya", deity: "Sang Hyang Sambhu" },
   { name: "dadi", urip: 8, direction: "Tengah - Madya", deity: "Sang Hyang Shiwa" }
 ] as const;
+
+export const getSangawara = (date: Date | string | number) => {
+    const daysSinceAnchorDate = getDaysSinceAnchorDate(date);
+    let sangawaraIndex = 0;
+
+    if (daysSinceAnchorDate <= 3 ){
+      sangawaraIndex = 0;
+    } else {
+      sangawaraIndex = (daysSinceAnchorDate - 3) % SANGAWARA_MODULO;
+    }
+    
+    const sangawara = SANGAWARA[sangawaraIndex];
+
+    if (!sangawara) throw new Error("Sangawara not found");
+
+    return sangawara;
+}
